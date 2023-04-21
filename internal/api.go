@@ -3,6 +3,7 @@ package internal
 import (
 	"encoding/json"
 	"github.com/MLinek/TibiaData/internal/models"
+	"strings"
 )
 
 type API struct {
@@ -10,7 +11,7 @@ type API struct {
 
 func (api API) Guild(name string) (models.Guild, error) {
 	f := &Fetcher{}
-	body, err := f.fetch("https://api.tibiadata.com/v3/guild/" + name)
+	body, err := f.fetch("https://api.tibiadata.com/v3/guild/" + strings.Replace(name, " ", "%20", -1))
 	if err != nil {
 		return models.Guild{}, err
 	}
@@ -19,5 +20,5 @@ func (api API) Guild(name string) (models.Guild, error) {
 	if err != nil {
 		return models.Guild{}, err
 	}
-	return guilds.Guild, nil
+	return guilds.Guilds.Guild, nil
 }

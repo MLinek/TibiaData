@@ -1,0 +1,17 @@
+{
+  "lists": [
+    {
+      "name": "core",
+      "guilds": [
+        "Core"
+      ]
+    },
+    {
+      "name": "retro",
+      "guilds": [
+        "Retro Delusion",
+        "Inq Delusion"
+      ]
+    }
+  ]
+}
