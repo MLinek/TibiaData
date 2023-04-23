@@ -45,10 +45,10 @@ func startPolling() {
 		if err == nil {
 			err := updateExportedList(cfg)
 			if err != nil {
-				print(err)
+				print(err.Error())
 			}
 		} else {
-			print(err)
+			print(err.Error())
 		}
 	}
 }
