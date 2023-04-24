@@ -9,8 +9,9 @@ import (
 
 type config struct {
 	Lists []struct {
-		Name   string   `json:"name"`
-		Guilds []string `json:"guilds"`
+		Name      string   `json:"name"`
+		Guilds    []string `json:"guilds"`
+		ChannelId string   `json:"channelId"`
 	} `json:"lists"`
 }
 
@@ -19,8 +20,9 @@ type export struct {
 }
 
 type exportList struct {
-	Name   string        `json:"name"`
-	Guilds []exportGuild `json:"guilds"`
+	Name      string        `json:"name"`
+	ChannelId string        `json:"channelId"`
+	Guilds    []exportGuild `json:"guilds"`
 }
 type exportGuild struct {
 	Name    string         `json:"name"`
@@ -77,6 +79,7 @@ func generateExport(cfg config) (export, error) {
 		if err != nil {
 			return export{}, err
 		}
+		rl.ChannelId = list.ChannelId
 		result.Lists = append(result.Lists, rl)
 	}
 	return result, nil
